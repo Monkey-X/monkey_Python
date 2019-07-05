@@ -1,6 +1,7 @@
 """
 操作字符串
 """
+import sys
 
 def main():
     str1 = 'hello world!'
@@ -63,6 +64,58 @@ def main3():
 def main4():
     f= [x for x in range(1,10)]
     print(f)
+    f1 =[x+y for x in 'ABCDE' for y in '123456789']#嵌套的循环
+    print(f1)
+    print(len(f1))
+    print('===============================================================================================================================')
+
+    f3 = [x**2 for x in range(1,1000)]#获取二次方的数据,这种语法需要消耗较多的内存空间
+    print(sys.getsizeof(f))#获取对象占用内存的字节数
+    print(f3)
+
+    print('+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
+    """
+    下面的代码创建的不是一个列表而是一个生成器对象
+    通过生成器可以获取到数据，但他不占用额外的空间存储数据
+    需要数据的时候，通过内部的运算得到数据
+    """
+    f4 = (x**2 for x in range(1,1000))
+    print(sys.getsizeof(f4))
+    print(f4)
+    for val in f4:
+        print(val)
+
+"""
+通过yield关键字将普通的函数改造成生成器函数
+例：递归生成斐波拉契数列
+"""
+def fib(n):
+    a,b =0,1
+    for _ in range(n):
+        a,b =b,a+b
+        yield a
+def main5():
+    for val in fib(20):
+        print(val)
+
+#元组
+#元组的元素不能修改
+# 
+def tupleMain():
+    t= ('元组',38,True,'yuanzu')
+    print(t)
+    print(t[0])
+    for member in t:
+        print(member)
+
+    person =list(t)#将元组转换为列表
+    print(person)
+
+    fruits =['apple', 'banana', 'orange']
+    fruit_tuple = tuple(fruits)#列表转换为元组
+    print(fruit_tuple)
+
+
 
 
 if __name__ == "__main__":
@@ -71,3 +124,5 @@ if __name__ == "__main__":
     main2()
     main3()
     main4()
+    main5()
+    tupleMain()
