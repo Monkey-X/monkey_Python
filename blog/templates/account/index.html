@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}首页 {% endblock %}
+{% block content %}
+
+    {% if user.is_authenticated %}
+    欢迎你，{{user.username}}
+    <a href="/account/user_logout/">退出</a>
+    {% endif %}
+ <h1>登录成功后的界面</h1>
+ {% endblock %}

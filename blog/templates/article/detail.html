@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %} 文章详情 {% endblock %}
+{% block content %}
+ <h1> 标题： {{article}}</h1>
+ <p>作者：{{article.author.username}}</p>
+ <p>内容：{{article.content}}</p>
+ {% endblock%}
